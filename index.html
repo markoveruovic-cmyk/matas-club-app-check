@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matas Club — App Review Analysis | Etnetera Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111111;
+  --ink-soft:#4a4a4a;
+  --ink-faint:#8a8a8a;
+  --paper:#ffffff;
+  --paper-alt:#f6f8f7;
+  --line:#e6e9e7;
+  --accent:#43B182;
+  --accent-dark:#338a64;
+  --accent-tint:#e9f5f0;
+  --neg:#d6504e;
+  --neg-soft:#fbeded;
+  --pos:#43B182;
+  --ios:#111111;
+  --gp:#7a7e7c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:15.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{line-height:1.15;letter-spacing:-0.015em;font-weight:700}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+a{color:inherit}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);z-index:50}
+.hbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.hbar img{height:28px;display:block}
+.hbar .doc-type{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+.hbar .doc-type span{background:var(--accent);color:#fff;padding:4px 10px;margin-left:8px;border-radius:99px}
+
+/* ---------- hero ---------- */
+.hero{padding:84px 0 60px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-160px;top:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle at center,rgba(67,177,130,.16),rgba(67,177,130,0) 70%);pointer-events:none}
+.kicker{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft);margin-bottom:22px}
+.kicker b{color:var(--accent-dark)}
+.hero h1{font-size:clamp(32px,5.4vw,56px);font-weight:800;max-width:20ch}
+.hero h1 em{font-style:normal;box-shadow:inset 0 -0.28em 0 rgba(67,177,130,.28)}
+.hero p.lede{margin-top:26px;font-size:17.5px;color:var(--ink-soft);max-width:66ch}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:30px;margin-top:42px;font-size:13px}
+.hero .meta-row div b{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-faint);margin-bottom:4px;font-weight:600}
+
+/* ---------- sections ---------- */
+section{padding:70px 0;border-bottom:1px solid var(--line)}
+.sec-label{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sec-label .num{font-weight:800;font-size:12.5px;color:#fff;background:var(--accent);padding:3px 10px;border-radius:99px}
+.sec-label .t{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-soft)}
+section h2{font-size:clamp(24px,3.2vw,36px);font-weight:800;margin-bottom:16px;max-width:28ch}
+.sec-intro{font-size:16px;color:var(--ink-soft);max-width:70ch;margin-bottom:40px}
+
+/* ---------- exec summary ---------- */
+.exec-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.exec-grid .cell{background:var(--paper);padding:28px}
+.exec-grid .cell h3{font-size:14.5px;margin-bottom:10px}
+.exec-grid .cell h3 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.exec-grid .cell p{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- stat band ---------- */
+.stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:56px;border-radius:10px;overflow:hidden}
+.stat{background:var(--paper);padding:26px 24px}
+.stat .v{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.02em}
+.stat .v small{font-size:.45em;color:var(--ink-faint);font-weight:600;letter-spacing:0}
+.stat .l{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--ink-soft);margin-top:8px;font-weight:600}
+.stat .s{font-size:12.5px;color:var(--ink-faint);margin-top:5px}
+
+/* ---------- charts ---------- */
+.chart-duo{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:56px}
+.chart-card{margin-bottom:0}
+.chart-card h3{font-size:15.5px;margin-bottom:4px}
+.chart-card .sub{font-size:12.5px;color:var(--ink-faint);margin-bottom:20px}
+.dist-row{display:grid;grid-template-columns:34px 1fr 92px;align-items:center;gap:12px;margin-bottom:9px;font-size:12.5px}
+.dist-row .star{font-weight:600;color:var(--ink-soft)}
+.dist-track{background:var(--paper-alt);height:20px;position:relative;border-radius:4px;overflow:hidden}
+.dist-fill{height:100%;background:#9aa39f}
+.dist-fill.five{background:var(--accent)}
+.dist-fill.low{background:var(--neg)}
+.dist-row .n{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.trend{display:flex;align-items:flex-end;gap:8px;height:180px;margin-top:8px}
+.trend .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;height:100%}
+.trend .bar .col{width:100%;background:#9aa39f;border-radius:4px 4px 0 0}
+.trend .bar.dip .col{background:var(--neg)}
+.trend .bar.hi .col{background:var(--accent)}
+.trend .bar .val{font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums}
+.trend .bar .yr{font-size:10.5px;color:var(--ink-faint);font-weight:600;text-align:center}
+.trend-note{font-size:12.5px;color:var(--ink-faint);margin-top:14px;max-width:62ch}
+/* horizontal theme bars */
+.hbar-row{display:grid;grid-template-columns:210px 1fr 70px;align-items:center;gap:12px;margin-bottom:10px;font-size:12.5px}
+.hbar-row .lbl{font-weight:600;color:var(--ink-soft);text-align:right}
+.hbar-track{background:var(--paper-alt);height:20px;border-radius:4px;overflow:hidden;display:flex}
+.hbar-gp{height:100%;background:var(--neg)}
+.hbar-as{height:100%;background:#111}
+.hbar-row .n{color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--ink-soft);margin-bottom:16px}
+.legend span i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* ---------- category table ---------- */
+table.cats{width:100%;border-collapse:collapse;font-size:13.5px}
+table.cats th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-faint);font-weight:700;padding:10px 12px;border-bottom:2px solid var(--ink)}
+table.cats td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.cats td.num{font-variant-numeric:tabular-nums}
+table.cats .pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 11px;border-radius:99px}
+.pill.crit{background:var(--neg-soft);color:var(--neg)}
+.pill.warn{background:#fdf3da;color:#8f6400}
+.pill.ok{background:var(--accent-tint);color:var(--accent-dark)}
+table.cats tr:hover td{background:var(--paper-alt)}
+
+/* ---------- pain points ---------- */
+.pp{border:1px solid var(--line);border-left:5px solid var(--ink);padding:28px 32px;margin-bottom:20px;background:var(--paper);border-radius:0 10px 10px 0}
+.pp.crit{border-left-color:var(--neg)}
+.pp.warn{border-left-color:#dcab2f}
+.pp-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;margin-bottom:8px}
+.pp-head h3{font-size:18.5px}
+.pp-head .idx{font-weight:800;font-size:12px;color:var(--ink-faint)}
+.pp-tags{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.pp-tags span{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;border:1px solid var(--line);padding:4px 10px;color:var(--ink-soft);border-radius:99px}
+.pp-tags span.plat{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pp p{font-size:14.5px;color:var(--ink-soft);max-width:80ch}
+.pp .evidence{margin-top:12px;font-size:12.5px;color:var(--ink-faint)}
+.pp .evidence b{color:var(--ink-soft)}
+
+/* ---------- quotes ---------- */
+.q-group{margin-bottom:64px}
+.q-group > h3{font-size:20px;margin-bottom:6px;padding-top:10px}
+.q-group > .gsub{font-size:13.5px;color:var(--ink-faint);margin-bottom:26px}
+.quote{border:1px solid var(--line);margin-bottom:18px;background:var(--paper);border-radius:10px;overflow:hidden}
+.q-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:13px 22px;border-bottom:1px solid var(--line);background:var(--paper-alt);font-size:12px}
+.q-meta .who{font-weight:700;font-size:13px}
+.q-meta .stars{color:var(--accent-dark);letter-spacing:1px;font-size:12px}
+.q-meta .stars .off{color:#d3d8d5}
+.q-meta .plat{font-weight:600;text-transform:uppercase;letter-spacing:.09em;font-size:10px;padding:3px 9px;color:#fff;background:var(--gp);border-radius:99px}
+.q-meta .plat.ios{background:var(--ios)}
+.q-meta .extra{color:var(--ink-faint)}
+.q-body{display:grid;grid-template-columns:1fr 1fr}
+.q-body .pane{padding:18px 22px}
+.q-body .pane + .pane{border-left:1px solid var(--line)}
+.q-body .lang{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-faint);margin-bottom:8px}
+.q-body .da .lang::before{content:"🇩🇰 "}
+.q-body .en .lang::before{content:"🇬🇧 "}
+.q-body p{font-size:14px}
+.q-body .da p{color:var(--ink-soft);font-style:italic}
+.q-body .en p{color:var(--ink)}
+.q-title{font-weight:700;font-style:normal !important;display:block;margin-bottom:4px}
+.quote.en-orig .q-body{grid-template-columns:1fr}
+
+/* ---------- loved ---------- */
+.love-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.love{border:1px solid var(--line);border-top:4px solid var(--accent);padding:22px 24px;border-radius:0 0 10px 10px}
+.love .q-meta{padding:0 0 12px;background:none;border:none}
+.love p.da{font-style:italic;color:var(--ink-soft);font-size:13.5px;margin-bottom:8px}
+.love p.en{font-size:14px}
+
+/* ---------- recs ---------- */
+.dark{background:var(--ink);color:#fff}
+.dark h2{color:#fff}
+.dark .sec-intro{color:#b7bdba}
+.dark .sec-label .num{background:var(--accent)}
+.rec{display:grid;grid-template-columns:54px 1fr;gap:22px;padding:25px 0;border-bottom:1px solid #2b2e2c}
+.rec:last-of-type{border-bottom:none}
+.rec .n{font-weight:800;font-size:21px;color:var(--accent)}
+.rec h3{font-size:17px;margin-bottom:8px;color:#fff}
+.rec p{font-size:14px;color:#b7bdba;max-width:76ch}
+.cta{margin-top:46px;border:1px solid #2b2e2c;padding:34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;background:#1a1d1b;border-radius:12px}
+.cta h3{font-size:21px;color:#fff;max-width:28ch}
+.cta p{font-size:13.5px;color:#b7bdba;margin-top:6px;max-width:48ch}
+.cta a.btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;padding:15px 28px;text-decoration:none;font-size:14.5px;border-radius:99px;transition:background .15s ease}
+.cta a.btn:hover{background:var(--accent-dark)}
+
+/* ---------- methodology / footer ---------- */
+.meth{font-size:13.5px;color:var(--ink-soft);max-width:80ch}
+.meth li{margin:0 0 10px 18px}
+footer{padding:42px 0;font-size:12px;color:var(--ink-faint)}
+footer .frow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer img{height:22px;opacity:.9}
+
+@media (max-width:820px){
+  .exec-grid,.chart-duo,.love-grid{grid-template-columns:1fr}
+  .stat-band{grid-template-columns:1fr 1fr}
+  .q-body{grid-template-columns:1fr}
+  .q-body .pane + .pane{border-left:none;border-top:1px solid var(--line)}
+  .hbar-row{grid-template-columns:130px 1fr 60px}
+}
+@media print{
+  header{position:static}
+  section{padding:36px 0}
+  .quote,.pp{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hbar">
+    <img src="https://cdn.prod.website-files.com/665374a034addb5e55e19e56/665448bc329a4fd7a6af1d2c_etnetera_flow-logo.svg" alt="Etnetera Flow" onerror="this.outerHTML='<strong>etnetera flow</strong>'">
+    <div class="doc-type">App Review Analysis <span>Matas Club</span></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Etnetera Flow · <b>User Review Analysis</b> · Google Play &amp; Apple App Store</div>
+    <h1>Matas Club mobile app: analysis of <em>1,148 user reviews</em></h1>
+    <p class="lede">This report analyses publicly available user reviews of the Matas Club app — 1,000 from Google Play and 148 from the Apple App Store. Overall sentiment is positive and has improved markedly since 2024. The analysis identifies four recurring technical pain points concentrated in authentication, release stability, checkout and payments, and gamification. Each finding is documented with verbatim user quotes, presented in the original Danish alongside English translations.</p>
+    <div class="meta-row">
+      <div><b>App</b>Matas Club (Club Matas)</div>
+      <div><b>Market</b>Denmark · da-DK</div>
+      <div><b>Data window</b>Oct 2019 – Jun 2026</div>
+      <div><b>Sample</b>1,000 Google Play · 148 App Store</div>
+      <div><b>Report date</b>7 June 2026</div>
+      <div><b>Prepared by</b>Etnetera Flow</div>
+    </div>
+  </div>
+</div>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">01</span><span class="t">Executive summary</span></div>
+    <h2>Overview of findings</h2>
+    <p class="sec-intro">The review sample averages 3.99★ on Google Play and 4.20★ on the App Store, with a clear recovery after a weaker 2021–2023 period. However, 19.7% of Google Play reviews and 16.2% of App Store reviews are 1–2★, and these concentrate around a limited set of recurring, addressable issues.</p>
+    <div class="exec-grid">
+      <div class="cell">
+        <h3><span class="dot" style="background:var(--pos)"></span>Strengths</h3>
+        <p>Users consistently mention fast delivery, member offers and discounts, straightforward ordering, and in-store staff. Reviews from the last 12 months average 4.41★ on Google Play and 4.35★ on the App Store.</p>
+      </div>
+      <div class="cell">
+        <h3><span class="dot" style="background:var(--neg)"></span>Primary issues</h3>
+        <p>Login and session management (avg 1.88★ across 41 Google Play mentions), crashes following updates (avg 1.95★), checkout and payment failures including discount miscalculation, and gamification defects (65 mentions — the most frequently raised negative theme).</p>
+      </div>
+      <div class="cell">
+        <h3><span class="dot" style="background:#dcab2f"></span>Release-quality signal</h3>
+        <p>Version-level data shows how individual releases drive sentiment: reviews written on v5.3.3 average 1.90&#9733; and a crash cluster follows v7.4.5 (Oct 2024), while the 7.4.x&ndash;7.5.x line otherwise averages above 4.3&#9733;. Regressions reaching production are a recurring pattern.</p>
+      </div>
+      <div class="cell">
+        <h3><span class="dot" style="background:var(--ink)"></span>Platform differences</h3>
+        <p>Android reviews skew towards technical failures: login, crashes and payments. Negative iOS reviews most often concern checkout and payments and stock availability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">02</span><span class="t">Key statistics</span></div>
+    <h2>Quantitative overview</h2>
+    <p class="sec-intro">All figures are computed directly from the two exported review datasets (reviews with written text). They describe the analysed sample, not the official store-wide star rating, which also includes text-less ratings.</p>
+
+    <div class="stat-band">
+      <div class="stat"><div class="v">3.99<small> ★</small></div><div class="l">Google Play average</div><div class="s">n = 1,000 · 58.9% five-star · 19.7% one/two-star</div></div>
+      <div class="stat"><div class="v">4.20<small> ★</small></div><div class="l">App Store average</div><div class="s">n = 148 · 70.3% five-star · 16.2% one/two-star</div></div>
+      <div class="stat"><div class="v">4.41<small> ★</small></div><div class="l">GP · last 12 months</div><div class="s">136 reviews since Jun 2025 · 17 rated 1–2★</div></div>
+      <div class="stat"><div class="v">221</div><div class="l">Negative reviews (1–2★)</div><div class="s">197 Google Play + 24 App Store — the basis of the pain-point analysis</div></div>
+    </div>
+
+    <div class="chart-duo">
+      <div class="chart-card">
+        <h3>Rating distribution — Google Play</h3>
+        <div class="sub">1,000 reviews, Oct 2019 – Jun 2026</div>
+        <div class="dist-row"><span class="star">5★</span><div class="dist-track"><div class="dist-fill five" style="width:100%"></div></div><span class="n">589 · 58.9%</span></div>
+        <div class="dist-row"><span class="star">4★</span><div class="dist-track"><div class="dist-fill" style="width:24.3%"></div></div><span class="n">143 · 14.3%</span></div>
+        <div class="dist-row"><span class="star">3★</span><div class="dist-track"><div class="dist-fill" style="width:12.1%"></div></div><span class="n">71 · 7.1%</span></div>
+        <div class="dist-row"><span class="star">2★</span><div class="dist-track"><div class="dist-fill low" style="width:10.2%"></div></div><span class="n">60 · 6.0%</span></div>
+        <div class="dist-row"><span class="star">1★</span><div class="dist-track"><div class="dist-fill low" style="width:23.3%"></div></div><span class="n">137 · 13.7%</span></div>
+      </div>
+      <div class="chart-card">
+        <h3>Rating distribution — App Store</h3>
+        <div class="sub">148 reviews, Nov 2023 – Jun 2026</div>
+        <div class="dist-row"><span class="star">5★</span><div class="dist-track"><div class="dist-fill five" style="width:100%"></div></div><span class="n">104 · 70.3%</span></div>
+        <div class="dist-row"><span class="star">4★</span><div class="dist-track"><div class="dist-fill" style="width:11.5%"></div></div><span class="n">12 · 8.1%</span></div>
+        <div class="dist-row"><span class="star">3★</span><div class="dist-track"><div class="dist-fill" style="width:7.7%"></div></div><span class="n">8 · 5.4%</span></div>
+        <div class="dist-row"><span class="star">2★</span><div class="dist-track"><div class="dist-fill low" style="width:4.8%"></div></div><span class="n">5 · 3.4%</span></div>
+        <div class="dist-row"><span class="star">1★</span><div class="dist-track"><div class="dist-fill low" style="width:18.3%"></div></div><span class="n">19 · 12.8%</span></div>
+      </div>
+    </div>
+
+    <div class="chart-duo">
+      <div class="chart-card">
+        <h3>Average rating by year — Google Play</h3>
+        <div class="sub">Average star rating of reviews written each year (count in brackets)</div>
+        <div class="trend">
+          <div class="bar"><div class="val">4.09</div><div class="col" style="height:64%"></div><div class="yr">2019<br>(119)</div></div>
+          <div class="bar"><div class="val">4.12</div><div class="col" style="height:65%"></div><div class="yr">2020<br>(280)</div></div>
+          <div class="bar dip"><div class="val">3.13</div><div class="col" style="height:38%"></div><div class="yr">2021<br>(147)</div></div>
+          <div class="bar dip"><div class="val">3.04</div><div class="col" style="height:36%"></div><div class="yr">2022<br>(49)</div></div>
+          <div class="bar dip"><div class="val">3.16</div><div class="col" style="height:39%"></div><div class="yr">2023<br>(50)</div></div>
+          <div class="bar hi"><div class="val">4.48</div><div class="col" style="height:78%"></div><div class="yr">2024<br>(159)</div></div>
+          <div class="bar hi"><div class="val">4.38</div><div class="col" style="height:74%"></div><div class="yr">2025<br>(138)</div></div>
+          <div class="bar hi"><div class="val">4.53</div><div class="col" style="height:80%"></div><div class="yr">2026<br>(58)</div></div>
+        </div>
+        <p class="trend-note">A pronounced dip in 2021–2023 (averages of 3.0–3.2★, coinciding with the 2021 app migration that generated the most-upvoted complaints of that era) is followed by a sustained recovery from 2024 onwards.</p>
+      </div>
+      <div class="chart-card">
+        <h3>Average rating by year — App Store</h3>
+        <div class="sub">Average star rating of reviews written each year (count in brackets)</div>
+        <div class="trend">
+          <div class="bar"><div class="val">4.00</div><div class="col" style="height:62%"></div><div class="yr">2023<br>(1)</div></div>
+          <div class="bar dip"><div class="val">3.57</div><div class="col" style="height:48%"></div><div class="yr">2024<br>(14)</div></div>
+          <div class="bar hi"><div class="val">4.23</div><div class="col" style="height:70%"></div><div class="yr">2025<br>(87)</div></div>
+          <div class="bar hi"><div class="val">4.33</div><div class="col" style="height:73%"></div><div class="yr">2026<br>(46)</div></div>
+        </div>
+        <p class="trend-note">The App Store sample is smaller and more recent; 2023–2024 figures are based on low review counts and should be read as indicative only.</p>
+      </div>
+    </div>
+
+    <div class="chart-card" style="margin-bottom:56px">
+      <h3>Average rating by app version — Google Play</h3>
+      <div class="sub">Versions with at least 20 reviews in the sample (review count in brackets)</div>
+      <div class="trend" style="height:170px">
+        <div class="bar"><div class="val">4.30</div><div class="col" style="height:74%"></div><div class="yr">4.1.3<br>(238)</div></div>
+        <div class="bar dip"><div class="val">3.58</div><div class="col" style="height:55%"></div><div class="yr">5.1.0<br>(45)</div></div>
+        <div class="bar dip"><div class="val">3.80</div><div class="col" style="height:60%"></div><div class="yr">5.1.1<br>(59)</div></div>
+        <div class="bar"><div class="val">4.15</div><div class="col" style="height:70%"></div><div class="yr">5.2.3<br>(27)</div></div>
+        <div class="bar dip"><div class="val">1.90</div><div class="col" style="height:20%"></div><div class="yr">5.3.3<br>(20)</div></div>
+        <div class="bar hi"><div class="val">4.63</div><div class="col" style="height:84%"></div><div class="yr">7.4.2<br>(71)</div></div>
+        <div class="bar hi"><div class="val">4.76</div><div class="col" style="height:88%"></div><div class="yr">7.4.6<br>(33)</div></div>
+        <div class="bar hi"><div class="val">4.65</div><div class="col" style="height:85%"></div><div class="yr">7.4.8<br>(20)</div></div>
+        <div class="bar"><div class="val">4.30</div><div class="col" style="height:74%"></div><div class="yr">7.4.9<br>(27)</div></div>
+        <div class="bar hi"><div class="val">4.64</div><div class="col" style="height:84%"></div><div class="yr">7.5.2<br>(88)</div></div>
+      </div>
+      <p class="trend-note">Version-level averages illustrate how individual releases affect sentiment: reviews written on v5.3.3 average just 1.90★, and the v5.1.x releases also sit well below the long-term average, while the 7.4.x–7.5.x line performs consistently above 4.3★ (with the exception of 7.4.9, which coincides with the Easter-competition complaints quoted in Section 04). Version data is available for Google Play only.</p>
+    </div>
+
+    <div class="chart-duo">
+      <div class="chart-card">
+        <h3>Negative (1–2★) mentions by theme</h3>
+        <div class="sub">Number of negative reviews mentioning each theme, by platform</div>
+        <div class="legend"><span><i style="background:var(--neg)"></i>Google Play</span><span><i style="background:#111"></i>App Store</span></div>
+        <div class="hbar-row"><span class="lbl">Competitions &amp; gamification</span><div class="hbar-track"><div class="hbar-gp" style="width:89%"></div><div class="hbar-as" style="width:5.4%"></div></div><span class="n">33 + 2</span></div>
+        <div class="hbar-row"><span class="lbl">Login &amp; authentication</span><div class="hbar-track"><div class="hbar-gp" style="width:86%"></div><div class="hbar-as" style="width:8.1%"></div></div><span class="n">32 + 3</span></div>
+        <div class="hbar-row"><span class="lbl">Crashes &amp; stability</span><div class="hbar-track"><div class="hbar-gp" style="width:81%"></div><div class="hbar-as" style="width:8.1%"></div></div><span class="n">30 + 3</span></div>
+        <div class="hbar-row"><span class="lbl">Checkout &amp; payments</span><div class="hbar-track"><div class="hbar-gp" style="width:54%"></div><div class="hbar-as" style="width:13.5%"></div></div><span class="n">20 + 5</span></div>
+        <div class="hbar-row"><span class="lbl">Prices &amp; discounts</span><div class="hbar-track"><div class="hbar-gp" style="width:35%"></div><div class="hbar-as" style="width:2.7%"></div></div><span class="n">13 + 1</span></div>
+        <div class="hbar-row"><span class="lbl">Stock &amp; delivery</span><div class="hbar-track"><div class="hbar-gp" style="width:19%"></div><div class="hbar-as" style="width:10.8%"></div></div><span class="n">7 + 4</span></div>
+        <p class="trend-note">A review can match more than one theme. Keyword matching on Danish terms; see methodology.</p>
+      </div>
+      <div class="chart-card">
+        <h3>Theme signal table</h3>
+        <div class="sub">All mentions (any rating) and the average rating of those mentions</div>
+        <table class="cats">
+          <thead><tr><th>Theme</th><th>GP / AS mentions</th><th>Avg ★ (GP)</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td><b>Login &amp; authentication</b></td><td class="num">41 / 4</td><td class="num">1.88</td><td><span class="pill crit">Critical</span></td></tr>
+            <tr><td><b>Crashes &amp; stability</b></td><td class="num">41 / 3</td><td class="num">1.95</td><td><span class="pill crit">Critical</span></td></tr>
+            <tr><td><b>Checkout &amp; payments</b></td><td class="num">35 / 12</td><td class="num">2.40</td><td><span class="pill crit">Critical</span></td></tr>
+            <tr><td><b>Competitions &amp; gamification</b></td><td class="num">65 / 5</td><td class="num">2.82</td><td><span class="pill warn">High volume</span></td></tr>
+            <tr><td><b>Stock &amp; delivery</b></td><td class="num">50 / 36</td><td class="num">4.16</td><td><span class="pill ok">Mostly positive</span></td></tr>
+            <tr><td><b>Prices &amp; discounts</b></td><td class="num">101 / 35</td><td class="num">4.37</td><td><span class="pill ok">Mostly positive</span></td></tr>
+          </tbody>
+        </table>
+        <p class="trend-note">A low average rating indicates a theme is raised almost exclusively in negative reviews; a high average indicates the theme is predominantly a strength.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="painpoints">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">03</span><span class="t">Key pain points by platform</span></div>
+    <h2>Four technical pain points</h2>
+    <p class="sec-intro">The pain points below were identified from the 221 negative (1–2★) reviews in the sample. Severity classification reflects mention volume, the average rating of the mentions, recency, and helpful-vote counts. Verbatim evidence for each point follows in Section 04.</p>
+
+    <div class="pp crit">
+      <div class="pp-head"><span class="idx">PP-01</span><h3>Login &amp; session management failures</h3></div>
+      <div class="pp-tags"><span class="plat">Android — primary</span><span class="plat">iOS</span><span>Authentication</span><span>Blocks all other functionality</span></div>
+      <p>The lowest-rated theme on Android (avg 1.88★ across 41 mentions). Users report being logged out repeatedly, unexplained password resets, login loops ("sorry we had to interrupt your sign-in"), needing many attempts to sign in, and device-specific failures — while the same credentials work in the browser. The same login loop is reported on iOS, where reinstalling the app does not resolve it. Because authentication gates every other feature, these failures effectively make the app unusable for affected users.</p>
+      <div class="evidence"><b>Evidence:</b> 41 GP + 4 AS mentions · recurring from 2024 through May 2026 · quotes Q1–Q6</div>
+    </div>
+
+    <div class="pp crit">
+      <div class="pp-head"><span class="idx">PP-02</span><h3>Crashes &amp; instability following updates</h3></div>
+      <div class="pp-tags"><span class="plat">Android — primary</span><span class="plat">iOS</span><span>Stability</span><span>Release quality</span></div>
+      <p>41 Google Play mentions averaging 1.95★. A distinct cluster follows the v7.4.5 release (October–November 2024): the app crashes on launch, locks up, or closes seconds after opening, and reinstalling does not help. iOS users describe the app getting stuck on the start screen. Several reviewers state explicitly that the app worked before the update in question, indicating that regressions are reaching production. The version-level chart in Section 02 (v5.3.3 at 1.90★) shows the same pattern in earlier releases.</p>
+      <div class="evidence"><b>Evidence:</b> crash cluster on v7.4.5 (Oct 2024) · quotes Q7–Q10</div>
+    </div>
+
+    <div class="pp crit">
+      <div class="pp-head"><span class="idx">PP-03</span><h3>Checkout, payments &amp; discount calculation</h3></div>
+      <div class="pp-tags"><span class="plat">Android</span><span class="plat">iOS</span><span>Revenue-critical</span><span>Klarna · MobilePay · Anyday</span></div>
+      <p>Reviews describe payment methods failing at checkout: Klarna payments that never complete, MobilePay failures, and a default flow perceived as steering users into Anyday financing. In addition, the basket itself is reported to miscalculate multi-buy discounts (3-for-3 offers, two-item bundles) — in one case the missing discount was only discovered on the invoice. Further reports cover gift-card state persisting between orders and subscription items that cannot be combined with regular orders or paid via MobilePay, resulting in split orders and repeated MitID approvals.</p>
+      <div class="evidence"><b>Evidence:</b> 35 GP + 12 AS mentions, avg 2.40★ (GP) · quotes Q11–Q17</div>
+    </div>
+
+    <div class="pp warn">
+      <div class="pp-head"><span class="idx">PP-04</span><h3>Defects in competitions &amp; gamification</h3></div>
+      <div class="pp-tags"><span class="plat">Android — primary</span><span class="plat">iOS</span><span>Loyalty &amp; engagement</span><span>Highest mention volume</span></div>
+      <p>Competitions and seasonal games are the most frequently raised negative theme (65 Google Play mentions, avg 2.82★). Reported issues include games freezing mid-play and losing earned points, levels with unwinnable obstacle layouts, accidental taps registered as completed entries, reward catalogues that empty out, perceived imbalance in prize point values, and — because winners are not published — a recurring perception that prizes are never awarded. The engagement layer is currently a measurable source of dissatisfaction with the loyalty programme.</p>
+      <div class="evidence"><b>Evidence:</b> 65 GP + 5 AS mentions · Easter/summer game complaints 2025–2026 · quotes Q18–Q22</div>
+    </div>
+
+    </div>
+</section>
+<section id="proof">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">04</span><span class="t">Voice of the customer — proof</span></div>
+    <h2>User quotes, verbatim</h2>
+    <p class="sec-intro">All quotes are reproduced exactly as published on Google Play and the App Store, with original Danish on the left and an English translation on the right. Reviewer names are public store display names. A few reviews were originally written in English and are marked accordingly.</p>
+    <!-- ============ LOGIN ============ -->
+    <div class="q-group">
+      <h3>PP-01 · Login &amp; session management</h3>
+      <div class="gsub">Repeated logouts, login loops and forced password resets — while the same credentials work in the browser.</div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">jens Menzer</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q1 · 25 May 2026 · v7.5.5 · 👍 3 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Godt nok blevet en dårlig app, som hele tiden logger dig ud!! Yderst belastende &amp; så nulstiller de din adgangskode efter godtbefindene!!!“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"It has really become a bad app that logs you out all the time!! Extremely annoying — and then they reset your password whenever they feel like it!!!"</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Sarah Bisgaard</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q2 · 18 Oct 2024 · v7.4.5 · 👍 4 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Normalt ville jeg give topkarakter, men app'en er helt uduelig i øjeblikket. Tidligere på ugen forsøgte jeg at bruge app'en, men den virker ikke mere. Når jeg genåbner app'en, så er jeg logget ud, og jeg kan nu ikke logge ind mere. Det er dog fortsat muligt at ligge ind online i en browser. Jeg har forsøgt at opdatere app'en, og jeg har forsøgt at fjerne den samt installere den påny igen, men lige lidt hjælper det. Jeg kan ikke længere logge ind!“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Normally I'd give top marks, but the app is completely useless right now. Earlier this week I tried to use the app, but it doesn't work any more. When I reopen the app I'm logged out, and now I can't log in at all. It is still possible to log in online in a browser, though. I've tried updating the app, and I've tried removing it and reinstalling it, but nothing helps. I can no longer log in!"</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Rikke Langeland Hyldborg Andersen</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q3 · 14 Mar 2025 · v7.4.9 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Elendig. Kan MÅSKE logge ind ved 17. forsøg. Og derefter er der ikke nogen hastighed på appen.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Awful. I can MAYBE log in on the 17th attempt. And after that, the app has no speed whatsoever."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Camilla Rasmussen</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat">Google Play</span><span class="extra">Q4 · 15 Feb 2025 · v7.4.8 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Hvorfor skal jeg lige pludselig logge mig ind hver eneste gang jeg bruger appen?“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Why do I suddenly have to log in every single time I use the app?"</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Pi113685900642</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat ios">App Store</span><span class="extra">Q5 · 21 Feb 2025 · "Kan ikke se favoritter…"</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p><span class="q-title">Kan ikke se favoritter…</span>„Er logget ind, men appen siger hele tiden at jeg skal logge ind igen, når det er gjort siger den “sorry we had to interrupt your sign-in” bla bla bla. Det virker i browseren.. men ikke i appen - og vi taler i flere måneder.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p><span class="q-title">Can't see favourites…</span>"I am logged in, but the app keeps saying I need to log in again, and once I do, it says 'sorry we had to interrupt your sign-in' blah blah blah. It works in the browser… but not in the app — and we're talking several months now."</p></div>
+        </div>
+      </div>
+
+      <div class="quote en-orig">
+        <div class="q-meta"><span class="who">ManuDKMD</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat ios">App Store</span><span class="extra">Q6 · 16 Dec 2025 · originally written in English</span></div>
+        <div class="q-body">
+          <div class="pane en"><div class="lang">Original (English)</div><p>"Always problems with authentication. It's disgusting!"</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CRASHES ============ -->
+    <div class="q-group">
+      <h3>PP-02 · Crashes &amp; instability after updates</h3>
+      <div class="gsub">A distinct cluster around v7.4.5 (October–November 2024); reinstalling does not resolve the issue.</div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">josephine Behrens</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q7 · 28 Oct 2024 · v7.4.5 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Appen lukker ned hele tiden har afinstalleret og installeret igen, den når lige at åbne startsiden også lukker appen ned lige meget hvor meget jeg prøver vil den ikke forblive åben“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"The app keeps shutting down. I've uninstalled and reinstalled it — it just barely opens the home screen and then closes again. No matter how many times I try, it won't stay open."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Katrine Brøndsted</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q8 · 11 Oct 2024 · v7.4.5 · 👍 4 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Efter opdateringen den anden dag, kan jeg ikke engang starte appen... den går bare helt i baglås når jeg prøver at åbne.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"After the update the other day, I can't even start the app… it just completely locks up when I try to open it."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Lone W Madsen</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q9 · 1 Nov 2024 · v7.4.5 · 👍 2 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Den lukker ned konstant. Men før den fik det problem var den god og jeg kan godt lide man kan gemme favoritter osv. Men altså den virker ikke i øjeblikket. Lukker ned konstant. Øv øv så derfor ikke mange stjerner“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"It crashes constantly. Before it got this problem it was good, and I like that you can save favourites etc. But it simply doesn't work at the moment. Crashes constantly. Such a shame — hence not many stars."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Skjoelstrup</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat ios">App Store</span><span class="extra">Q10 · 3 Feb 2025 · "Sidder fast"</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p><span class="q-title">Sidder fast</span>„Når jeg åbner appen åbner den kort siden og jeg kan ikke komme videre derfra. Der må være brug for en opdatering“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p><span class="q-title">Stuck</span>"When I open the app, it briefly shows the page and then I can't get any further. It must be in need of an update."</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CHECKOUT ============ -->
+    <div class="q-group">
+      <h3>PP-03 · Checkout, payments &amp; discount calculation</h3>
+      <div class="gsub">Failing payment methods, miscalculated multi-buy discounts, persisting gift-card state, and split subscription orders.</div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">John Andersen</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat">Google Play</span><span class="extra">Q11 · 20 Feb 2026 · v7.5.2</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„APP fungere bare ikke hver gang er der noget galt med systemet sammenregning af rabatter, og hvis man så ændre på antallet af vare i kurven så går det helt galt. Sidst havde den smidt en vare ud hvor der var 3 for 3 pris så jeg opdagede det først da jeg modtog min faktura sammen med at varene ankom i butikken. i dag kunne den igen ikke regne rabat ved køb af 2 stk korrekt ud først var prisen 278 for 2 med rabat så fjernede jeg den ene så kostede en kun 115 med rabat […]“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"The app just doesn't work — every time there's something wrong with the system's discount calculation, and if you change the number of items in the basket it goes completely wrong. Last time it dropped an item from a 3-for-3 deal, which I only discovered when I received my invoice as the goods arrived in the store. Today it again couldn't correctly calculate the discount on a 2-item purchase — first the price was 278 for 2 with the discount, then I removed one and a single item cost only 115 with the discount […]"</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Jeanette Aas</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q12 · 9 Oct 2025 · v7.5.2 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„pisse irriterende at Klarna betalingen aldrig fungerer. Den tænker og tænker bare og der sker aldrig noget. hvorfor have muligheden hvis ikke man kan gennemføre en Klarna betalingen“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Bloody annoying that the Klarna payment never works. It just thinks and thinks and nothing ever happens. Why offer the option if you can't actually complete a Klarna payment."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">winther, l</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat ios">App Store</span><span class="extra">Q13 · 5 Feb 2026 · "Hjemmesiden er elendig (i dag?)"</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p><span class="q-title">Hjemmesiden er elendig (i dag?)</span>„Det tager lang tid at opdatere kurven og billeder vises oveni hinanden. Endvidere virkede det ikke med MobilePay i dag. Virkelig en bøvlet købsoplevelse. Om det skyldes, at I har afsluttet mit plus- medlemskab ved jeg ikke. Håber på bedre oplevelse næste gang.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p><span class="q-title">The site is terrible (today?)</span>"It takes a long time for the basket to update, and images are displayed on top of each other. On top of that, MobilePay didn't work today. A really clunky shopping experience. Whether it's because you've ended my Plus membership, I don't know. Hoping for a better experience next time."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Lotte Petersen</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q14 · 6 Dec 2025 · v7.5.2</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„latterligt at man umiddelbart ryger ind på en anyday betaling“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Ridiculous that you're immediately dropped into an Anyday payment."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Charlotte Carstensen</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q15 · 31 Jan 2026 · v7.5.2</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„hvorfor fik jeg ikke.mine 25% som den sagde i starten af min ordre????? virkelig en jungle, øv“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Why didn't I get my 25% like it said at the start of my order????? An absolute jungle, ugh."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Mathias M</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q16 · 30 Aug 2025 · v7.5.1 · 👍 6 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Mange fejl! Kurv står som 1+ varer i navbaren, men tom når man går ind på den. Er gået noget helt galt med scaling af app. Hvis man bestiller noget og så skal til at bestille igen, så ses de anvendte gavekort fra sidste bestilling nogen gange stadig i næste. Bestiller man samme vare igen i efterfølgende bestilling, så kan den slet ikke finde ud af det til start.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Lots of bugs! The basket shows 1+ items in the navbar but is empty when you open it. Something has gone completely wrong with the app's scaling. If you place an order and then go to order again, the gift cards used in the previous order sometimes still show up in the next one. And if you order the same item again in a subsequent order, it can't handle it at all at first."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Saeliselivet</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat ios">App Store</span><span class="extra">Q17 · 15 Jun 2025 · "Meget besværligt!"</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p><span class="q-title">Meget besværligt!</span>„Jeg holder meget af at benytte webshoppen generelt. Men abonnementsordninger kan ikke tilvælges sammen med andre ordrer og heller ikke betales med Mobile Pay, hvilket bevirker en irriterende langsommelig købsproces af flere omgange med betalingskort, opdelte ordrer og MitId godkendelser. Det burde kunne løses bedre!“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p><span class="q-title">Very cumbersome!</span>"I really enjoy using the webshop in general. But subscription items can't be added together with other orders and can't be paid with MobilePay, which results in an annoyingly slow purchase process in several rounds — payment cards, split orders and MitID approvals. This really should be solved better!"</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- ============ GAMIFICATION ============ -->
+    <div class="q-group">
+      <h3>PP-04 · Competitions &amp; gamification</h3>
+      <div class="gsub">Freezing games, unwinnable levels, accidental entries and depleted reward catalogues.</div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Henriette Trabjerg Nielsen</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat">Google Play</span><span class="extra">Q18 · 30 Jun 2025 · v7.5.0 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Sommer spillet (og påske spillet) fungerer faktisk så dårligt at jeg ikke rigtig har en chance i spillet. Hver gang jeg spiller så kommer der med korte mellemrum under spillet, hvor spillet så fryser, og ofte tæller den så ikke point med, hvis den fryser lige hvor jeg var ved at samle feks solbriller...-andre gange ligger der sten på lige linje i alle 3 baner, så kan jeg jo ikke andet end at "dø"...-andre gange ligger der solbriller og en krabbe oveni hinanden!🤔🤷‍♀️👎“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"The summer game (and the Easter game) actually works so badly that I don't really stand a chance. Every time I play, the game freezes at short intervals, and often it doesn't count the points if it freezes right as I'm collecting, say, sunglasses… other times there are stones lined up across all 3 lanes, so all I can do is 'die'… other times sunglasses and a crab are stacked on top of each other! 🤔🤷‍♀️👎"</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Betina Christensen</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat">Google Play</span><span class="extra">Q19 · 8 May 2026 · v7.5.5</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„22-04-2026 Man lander aldrig på et produkt i spil og vind konkurrencerne i Matas app. Og selv om man har svaret rigtig på et spørgsmål i en konkurrence, i matas app, og har svaret rigtigt flere gange, og er med i lodtrækningen om at vinde et produkt eller ligende. Vinder man aldrig noget, har spurgt andre, jeg kender, der har Matas app. De har heller aldrig vundet noget. Der er heller ikke en liste med navne, på kunder der reelt har vundet noget. 06-05-2026 vandt en læbepomade så derfor rettet“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"22-04-2026: You never land on a product in the play-and-win competitions in the Matas app. And even when you've answered a competition question correctly — several times — and are entered in the draw to win a product or similar, you never win anything. I've asked others I know who have the Matas app; they've never won anything either. There's also no list of names of customers who have actually won anything. 06-05-2026: won a lip balm, so updated accordingly."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Zoe Søndergaard</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q20 · 18 Apr 2025 · v7.4.9 · 👍 1 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Elendig påskekonkurrence produkter for kvinder har dobbelt så mange point som mænd og det er umuligt at nå at vælge dem, fordi der er så få.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Awful Easter competition — products for women cost twice as many points as those for men, and it's impossible to grab them in time because there are so few."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Ann Nielsen</span><span class="stars">★<span class="off">★★★★</span></span><span class="plat">Google Play</span><span class="extra">Q21 · 17 Apr 2025</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„I øjeblikket kan man optjene guldæg, men det er intet at bruge dem til. Alt til rimelige point er allerede væk.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"Right now you can earn golden eggs, but there's nothing to spend them on. Everything at a reasonable point cost is already gone."</p></div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <div class="q-meta"><span class="who">Brian Fjordvald</span><span class="stars">★★<span class="off">★★★</span></span><span class="plat">Google Play</span><span class="extra">Q22 · 6 Feb 2025 · v7.4.8 · 👍 3 helpful</span></div>
+        <div class="q-body">
+          <div class="pane da"><div class="lang">Original (Danish)</div><p>„Konkurrencen er lidt defekt. Man kan ikke gå ud og ind igen hvis man får trykket ind ved en fejl. Så har man bare deltaget selvom man aldrig angav et svar. Det kan jo ikke være rigtig.“</p></div>
+          <div class="pane en"><div class="lang">English translation</div><p>"The competition is a bit broken. You can't exit and come back in if you tapped into it by mistake. So you've simply 'participated' even though you never submitted an answer. That can't be right."</p></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+</section>
+
+<section id="loved">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">05</span><span class="t">Positive feedback</span></div>
+    <h2>Positive feedback themes</h2>
+    <p class="sec-intro">For completeness: the majority of reviews are positive (58.9% five-star on Google Play, 70.3% on the App Store). The recurring praise — fast delivery, member offers, straightforward ordering and helpful in-store staff — indicates that the core proposition works; the pain points documented above represent friction within an otherwise well-received product.</p>
+    <div class="love-grid">
+      <div class="love">
+        <div class="q-meta"><span class="who">Malene Schütt</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">8 May 2026</span></div>
+        <p class="da">„App'en fungerer godt. Gode muligheder, tips og tricks samt nem og hurtig bestilling. Leverancen fungerer også uden problemer.“</p>
+        <p class="en">"The app works well. Good options, tips and tricks, plus easy and fast ordering. Delivery also works without any problems."</p>
+      </div>
+      <div class="love">
+        <div class="q-meta"><span class="who">Else Thybo</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">11 Oct 2025 · 👍 12 helpful</span></div>
+        <p class="da">„En meget tilfreds Club Matas Plus-kunde. Nyder de mange fordele og gode procenter, også den frie fragt tiltrækker mig.“</p>
+        <p class="en">"A very satisfied Club Matas Plus customer. I enjoy the many benefits and good discounts — the free shipping appeals to me too."</p>
+      </div>
+      <div class="love">
+        <div class="q-meta"><span class="who">Jens Palmqvist</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">12 Apr 2026</span></div>
+        <p class="da">„Virker bare, og der er mange hurtige leveringsmuligheder.“</p>
+        <p class="en">"It just works, and there are lots of fast delivery options."</p>
+      </div>
+      <div class="love">
+        <div class="q-meta"><span class="who">T. Hvid</span><span class="stars">★★★★★</span><span class="plat ios">App Store</span><span class="extra">3 Jun 2026 · "Tillidsfuldt"</span></div>
+        <p class="da">„God side og glad for mit medlemskab. Gode produkter og priser.“</p>
+        <p class="en">"Trustworthy — Good site and happy with my membership. Good products and prices."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="dark">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">06</span><span class="t">Recommendations</span></div>
+    <h2>Recommended priorities</h2>
+    <p class="sec-intro">The following priorities are derived directly from the patterns documented in this report. They are ordered by a combination of severity (average rating of mentions), business impact and recency.</p>
+
+    <div class="rec"><div class="n">01</div><div><h3>Stabilise authentication</h3><p>Login is the lowest-rated theme in the data (avg 1.88★) and gates all other functionality. The repeated observation that credentials work in the browser but not in the app points to an app-side session or token-lifecycle issue rather than an identity-provider problem, and provides a clear starting point for diagnosis.</p></div></div>
+    <div class="rec"><div class="n">02</div><div><h3>Strengthen release quality assurance</h3><p>The crash cluster around v7.4.5 and the 1.90★ average on v5.3.3 indicate that regressions periodically reach production. Pre-release testing across a representative device matrix, staged rollouts and crash-rate release gates would reduce the recurrence of these incidents.</p></div></div>
+    <div class="rec"><div class="n">03</div><div><h3>Audit the checkout and pricing engine</h3><p>Failed Klarna and MobilePay payments and miscalculated multi-buy discounts directly affect revenue and trust; in one documented case the discount error was only visible on the invoice. The basket's price calculation and the payment integrations warrant dedicated end-to-end test coverage and production monitoring.</p></div></div>
+    <div class="rec"><div class="n">04</div><div><h3>Repair or rescope gamification</h3><p>With 65 mentions averaging 2.82★, the engagement features currently generate measurable dissatisfaction: freezing games, accidental entries and depleted reward catalogues. Fixing the game mechanics, publishing winners and rebalancing the reward economy would address the documented complaints; alternatively, the feature's scope should be reconsidered.</p></div></div>
+    
+    <div class="cta">
+      <div>
+        <h3>Next step: a structured App Health Check</h3>
+        <p>This review analysis can serve as the input for a full technical and UX assessment covering the areas identified above.</p>
+      </div>
+      <a class="btn" href="https://flow.etnetera.cz/cs/app-health-check">App Health Check — Etnetera Flow</a>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="sec-label"><span class="num">07</span><span class="t">Data &amp; methodology</span></div>
+    <h2>How this report was prepared</h2>
+    <ul class="meth">
+      <li><b>Sources:</b> two scraped exports of public user reviews of the Matas Club app — 1,000 Google Play reviews (18 Oct 2019 – 5 Jun 2026) and 148 Apple App Store reviews (21 Nov 2023 – 4 Jun 2026). No other data sources were used; every statistic and quote in this report comes from these two files.</li>
+      <li><b>Averages:</b> computed over reviews in the sample (i.e. reviews with written text). They are not the official store-wide star ratings, which also include text-less ratings.</li>
+      <li><b>Pain-point themes:</b> identified by reading all 221 negative (1–2★) reviews and validated with Danish keyword matching across the full sample (e.g. <i>log ind, lukker ned, betal/Klarna/MobilePay, konkurrence</i>). Keyword counts are indicative; a review can match multiple themes.</li>
+      <li><b>Quotes:</b> reproduced verbatim, including original spelling and punctuation. English translations were produced for this report; reviews originally written in English are marked as such. Reviewer names are public display names as published on the stores.</li>
+      <li><b>Version data:</b> app version is available for Google Play reviews only (reviewCreatedVersion); the App Store export did not include version information.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap frow">
+    <img src="https://cdn.prod.website-files.com/665374a034addb5e55e19e56/665448bc329a4fd7a6af1d2c_etnetera_flow-logo.svg" alt="Etnetera Flow" onerror="this.outerHTML='<strong>etnetera flow</strong>'">
+    <div>Etnetera Flow · Jankovcova 1037/49, Prague 170 00 · flow.etnetera.cz · Member of Etnetera Group</div>
+    <div>App Review Analysis — Matas Club · 7 June 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
