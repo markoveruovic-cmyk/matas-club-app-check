@@ -193,6 +193,47 @@ footer img{height:22px;opacity:.9}
   section{padding:36px 0}
   .quote,.pp{break-inside:avoid}
 }
+
+/* ---------- subnav (bookmarks) ---------- */
+.subnav{position:sticky;top:61px;z-index:40;background:var(--ink);border-bottom:1px solid #2b2e2c}
+.subnav .wrap{display:flex;gap:4px;flex-wrap:wrap;padding-top:0;padding-bottom:0}
+.subnav a{color:#cfd4d1;text-decoration:none;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:14px 14px;border-bottom:2px solid transparent;white-space:nowrap}
+.subnav a:hover{color:#fff;border-bottom-color:var(--accent)}
+.subnav a.key{color:var(--ink);background:var(--accent);border-radius:99px;margin:9px 6px 9px 0;padding:7px 16px}
+.subnav a.key:hover{background:#fff;border-bottom-color:transparent}
+@media(max-width:820px){.subnav{display:none}}
+
+/* ---------- insights ---------- */
+.insights{background:var(--accent-tint);border-bottom:1px solid var(--line);padding:76px 0}
+.insights .big-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--accent-dark);margin-bottom:14px}
+.insights h2.huge{font-size:clamp(34px,6vw,68px);font-weight:800;letter-spacing:-.02em;line-height:1.04;max-width:18ch;margin-bottom:20px}
+.insights .intro{font-size:17px;color:var(--ink-soft);max-width:72ch;margin-bottom:44px}
+.ins-block{margin-bottom:40px}
+.ins-block h3{font-size:19px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.ins-block h3::before{content:"";width:22px;height:4px;background:var(--accent);border-radius:2px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.feat{background:var(--paper);padding:18px 20px}
+.feat .ft{font-size:14.5px;font-weight:700;margin-bottom:3px}
+.feat .fd{font-size:12.5px;color:var(--ink-soft)}
+.feat .fe{font-size:11px;color:var(--ink-faint);margin-top:7px;font-variant-numeric:tabular-nums}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.col{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px 26px}
+.col.good{border-top:4px solid var(--accent)}
+.col.bad{border-top:4px solid var(--neg)}
+.col h4{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.col.good h4{color:var(--accent-dark)}
+.col.bad h4{color:var(--neg)}
+.col ul{list-style:none}
+.col li{font-size:13.5px;color:var(--ink-soft);padding:8px 0 8px 22px;position:relative;border-bottom:1px solid var(--line)}
+.col li:last-child{border-bottom:none}
+.col li::before{position:absolute;left:0;top:8px;font-weight:700}
+.col.good li::before{content:"+";color:var(--accent-dark)}
+.col.bad li::before{content:"\2013";color:var(--neg)}
+.col li b{color:var(--ink)}
+.note-box{background:var(--paper);border:1px solid var(--line);border-left:4px solid #dcab2f;border-radius:0 10px 10px 0;padding:20px 24px;font-size:13.5px;color:var(--ink-soft);max-width:80ch}
+.note-box b{color:var(--ink)}
+@media(max-width:820px){.feat-grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -203,6 +244,18 @@ footer img{height:22px;opacity:.9}
     <div class="doc-type">App Review Analysis <span>Matas Club</span></div>
   </div>
 </header>
+
+<nav class="subnav">
+  <div class="wrap">
+    <a class="key" href="#insights">★ Insights from research</a>
+    <a href="#summary">Summary</a>
+    <a href="#stats">Statistics</a>
+    <a href="#painpoints">Pain points</a>
+    <a href="#proof">User quotes</a>
+    <a href="#method">Methodology</a>
+  </div>
+</nav>
+
 
 <div class="hero">
   <div class="wrap">
@@ -219,6 +272,86 @@ footer img{height:22px;opacity:.9}
     </div>
   </div>
 </div>
+
+
+<section id="insights" class="insights">
+  <div class="wrap">
+    <div class="big-label">Etnetera Flow · Research findings</div>
+    <h2 class="huge">Insights about the App from research</h2>
+    <p class="intro">A high-level picture of the Matas Club app drawn entirely from the analysed user reviews: what the app offers, how its gamification is received, what works and what does not, and what the reviews suggest about its competitive position. Every point below is grounded in review evidence — figures in brackets are the number of reviews mentioning that feature.</p>
+
+    <div class="ins-block">
+      <h3>What the app offers</h3>
+      <p class="intro" style="margin-bottom:20px">Matas Club is the loyalty and e-commerce app for the Danish health &amp; beauty retailer Matas. The reviews reference the following capabilities:</p>
+      <div class="feat-grid">
+        <div class="feat"><div class="ft">Club Matas membership</div><div class="fd">Member tiers (incl. Club Matas Plus), member discounts and free shipping.</div><div class="fe">40 mentions · free shipping 5</div></div>
+        <div class="feat"><div class="ft">Discounts &amp; points</div><div class="fd">Percentage discounts, bonus points and "stripes" (striber) earned on purchases.</div><div class="fe">69 mentions</div></div>
+        <div class="feat"><div class="ft">Webshop &amp; ordering</div><div class="fd">Browse and order products with home delivery and in-store click &amp; collect.</div><div class="fe">pickup/in-store 43</div></div>
+        <div class="feat"><div class="ft">Favourites lists</div><div class="fd">Save products to a personal favourites list for re-ordering.</div><div class="fe">41 mentions</div></div>
+        <div class="feat"><div class="ft">Subscriptions</div><div class="fd">Recurring subscription orders for selected products.</div><div class="fe">7 mentions</div></div>
+        <div class="feat"><div class="ft">Payments</div><div class="fd">Card, MobilePay, Klarna and Anyday, with MitID approval; gift cards.</div><div class="fe">MobilePay 9 · gift cards 3</div></div>
+        <div class="feat"><div class="ft">Free samples</div><div class="fd">Eligible orders qualify for free product samples.</div><div class="fe">23 mentions</div></div>
+        <div class="feat"><div class="ft">Recently viewed / buy again</div><div class="fd">Lists of previously viewed and previously purchased items.</div><div class="fe">iOS reports</div></div>
+        <div class="feat"><div class="ft">Tips &amp; content</div><div class="fd">Beauty tips, inspiration and short-form video content on the home screen.</div><div class="fe">9 mentions</div></div>
+      </div>
+    </div>
+
+    <div class="ins-block">
+      <h3>Gamification</h3>
+      <p class="intro" style="margin-bottom:20px">The loyalty programme includes seasonal mini-games (Easter, summer and Christmas), "play-and-win" competitions with quiz questions and prize draws, and a reward currency of points and "golden eggs" (guldæg). It generates real engagement — competitions are among the most-discussed topics (16 mentions) — but the execution is the issue:</p>
+      <div class="split">
+        <div class="col good">
+          <h4>Where it works</h4>
+          <ul>
+            <li><b>Drives participation</b> — seasonal games and competitions are actively played and frequently discussed.</li>
+            <li><b>Reward currency</b> — points and golden eggs give members a reason to return between purchases.</li>
+            <li><b>Tied to membership value</b> — works alongside the well-liked discount and free-shipping benefits.</li>
+          </ul>
+        </div>
+        <div class="col bad">
+          <h4>Where it breaks</h4>
+          <ul>
+            <li><b>Technical defects</b> — games freeze mid-play and lose earned points; obstacle layouts can be unwinnable.</li>
+            <li><b>Accidental entries</b> — tapping in by mistake counts as a completed entry with no way to exit.</li>
+            <li><b>Empty reward economy</b> — affordable rewards sell out, leaving earned points/eggs unspendable.</li>
+            <li><b>Trust gap</b> — no winners are published, fuelling a perception that prizes are never awarded.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-block">
+      <h3>What works vs. what doesn't</h3>
+      <div class="split">
+        <div class="col good">
+          <h4>Strengths</h4>
+          <ul>
+            <li><b>Delivery</b> — fast, with multiple options; the app's most consistently praised quality.</li>
+            <li><b>Offers &amp; membership value</b> — discounts, points and free shipping rated highly (theme avg 4.37&#9733;).</li>
+            <li><b>Ordering &amp; product range</b> — straightforward ordering and good prices cited repeatedly.</li>
+            <li><b>Overall trajectory</b> — sentiment recovered from ~3.0&#9733; (2021–23) to 4.4–4.5&#9733; in 2024–26.</li>
+          </ul>
+        </div>
+        <div class="col bad">
+          <h4>Weaknesses</h4>
+          <ul>
+            <li><b>Login &amp; sessions</b> — repeated logouts and login loops (theme avg 1.88&#9733;).</li>
+            <li><b>Stability</b> — crashes after updates; one release (v5.3.3) averaged 1.90&#9733;.</li>
+            <li><b>Checkout &amp; payments</b> — Klarna/MobilePay failures and miscalculated discounts.</li>
+            <li><b>Gamification reliability</b> — the engagement layer itself generates dissatisfaction.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ins-block" style="margin-bottom:0">
+      <h3>What the reviews suggest about competitive position</h3>
+      <div class="note-box">
+        <p>The dataset contains no competitor benchmark, so no like-for-like comparison against rival apps can be made from it. What the reviews <b>do</b> show is churn signal: around 13 reviews express intent to leave — to "shop online somewhere else" over long (14-day) delivery on online-only items, to delete the app over un-mutable notifications, or frustration that "everyday low price" pricing does not feel low. The same reviews identify what keeps members loyal: delivery options, member discounts and free shipping. In short, the competitive risk in this data is operational and technical (reliability, delivery time, pricing perception) rather than a missing feature — the feature set users describe is broad and well-regarded when it works.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="summary">
   <div class="wrap">
@@ -601,62 +734,12 @@ footer img{height:22px;opacity:.9}
     </div>
 </section>
 
-<section id="loved">
-  <div class="wrap">
-    <div class="sec-label"><span class="num">05</span><span class="t">Positive feedback</span></div>
-    <h2>Positive feedback themes</h2>
-    <p class="sec-intro">For completeness: the majority of reviews are positive (58.9% five-star on Google Play, 70.3% on the App Store). The recurring praise — fast delivery, member offers, straightforward ordering and helpful in-store staff — indicates that the core proposition works; the pain points documented above represent friction within an otherwise well-received product.</p>
-    <div class="love-grid">
-      <div class="love">
-        <div class="q-meta"><span class="who">Malene Schütt</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">8 May 2026</span></div>
-        <p class="da">„App'en fungerer godt. Gode muligheder, tips og tricks samt nem og hurtig bestilling. Leverancen fungerer også uden problemer.“</p>
-        <p class="en">"The app works well. Good options, tips and tricks, plus easy and fast ordering. Delivery also works without any problems."</p>
-      </div>
-      <div class="love">
-        <div class="q-meta"><span class="who">Else Thybo</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">11 Oct 2025 · 👍 12 helpful</span></div>
-        <p class="da">„En meget tilfreds Club Matas Plus-kunde. Nyder de mange fordele og gode procenter, også den frie fragt tiltrækker mig.“</p>
-        <p class="en">"A very satisfied Club Matas Plus customer. I enjoy the many benefits and good discounts — the free shipping appeals to me too."</p>
-      </div>
-      <div class="love">
-        <div class="q-meta"><span class="who">Jens Palmqvist</span><span class="stars">★★★★★</span><span class="plat">Google Play</span><span class="extra">12 Apr 2026</span></div>
-        <p class="da">„Virker bare, og der er mange hurtige leveringsmuligheder.“</p>
-        <p class="en">"It just works, and there are lots of fast delivery options."</p>
-      </div>
-      <div class="love">
-        <div class="q-meta"><span class="who">T. Hvid</span><span class="stars">★★★★★</span><span class="plat ios">App Store</span><span class="extra">3 Jun 2026 · "Tillidsfuldt"</span></div>
-        <p class="da">„God side og glad for mit medlemskab. Gode produkter og priser.“</p>
-        <p class="en">"Trustworthy — Good site and happy with my membership. Good products and prices."</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="next" class="dark">
-  <div class="wrap">
-    <div class="sec-label"><span class="num">06</span><span class="t">Recommendations</span></div>
-    <h2>Recommended priorities</h2>
-    <p class="sec-intro">The following priorities are derived directly from the patterns documented in this report. They are ordered by a combination of severity (average rating of mentions), business impact and recency.</p>
-
-    <div class="rec"><div class="n">01</div><div><h3>Stabilise authentication</h3><p>Login is the lowest-rated theme in the data (avg 1.88★) and gates all other functionality. The repeated observation that credentials work in the browser but not in the app points to an app-side session or token-lifecycle issue rather than an identity-provider problem, and provides a clear starting point for diagnosis.</p></div></div>
-    <div class="rec"><div class="n">02</div><div><h3>Strengthen release quality assurance</h3><p>The crash cluster around v7.4.5 and the 1.90★ average on v5.3.3 indicate that regressions periodically reach production. Pre-release testing across a representative device matrix, staged rollouts and crash-rate release gates would reduce the recurrence of these incidents.</p></div></div>
-    <div class="rec"><div class="n">03</div><div><h3>Audit the checkout and pricing engine</h3><p>Failed Klarna and MobilePay payments and miscalculated multi-buy discounts directly affect revenue and trust; in one documented case the discount error was only visible on the invoice. The basket's price calculation and the payment integrations warrant dedicated end-to-end test coverage and production monitoring.</p></div></div>
-    <div class="rec"><div class="n">04</div><div><h3>Repair or rescope gamification</h3><p>With 65 mentions averaging 2.82★, the engagement features currently generate measurable dissatisfaction: freezing games, accidental entries and depleted reward catalogues. Fixing the game mechanics, publishing winners and rebalancing the reward economy would address the documented complaints; alternatively, the feature's scope should be reconsidered.</p></div></div>
-    
-    <div class="cta">
-      <div>
-        <h3>Next step: a structured App Health Check</h3>
-        <p>This review analysis can serve as the input for a full technical and UX assessment covering the areas identified above.</p>
-      </div>
-      <a class="btn" href="https://flow.etnetera.cz/cs/app-health-check">App Health Check — Etnetera Flow</a>
-    </div>
-  </div>
-</section>
-
 <section id="method">
   <div class="wrap">
-    <div class="sec-label"><span class="num">07</span><span class="t">Data &amp; methodology</span></div>
+    <div class="sec-label"><span class="num">05</span><span class="t">Data &amp; methodology</span></div>
     <h2>How this report was prepared</h2>
     <ul class="meth">
+      <li><b>Hands-on testing:</b> in addition to the review analysis, the researcher installed the app on an emulator and tested it directly to verify and contextualise the reported behaviour.</li>
       <li><b>Sources:</b> two scraped exports of public user reviews of the Matas Club app — 1,000 Google Play reviews (18 Oct 2019 – 5 Jun 2026) and 148 Apple App Store reviews (21 Nov 2023 – 4 Jun 2026). No other data sources were used; every statistic and quote in this report comes from these two files.</li>
       <li><b>Averages:</b> computed over reviews in the sample (i.e. reviews with written text). They are not the official store-wide star ratings, which also include text-less ratings.</li>
       <li><b>Pain-point themes:</b> identified by reading all 221 negative (1–2★) reviews and validated with Danish keyword matching across the full sample (e.g. <i>log ind, lukker ned, betal/Klarna/MobilePay, konkurrence</i>). Keyword counts are indicative; a review can match multiple themes.</li>
